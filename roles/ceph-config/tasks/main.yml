@@ -41,6 +41,14 @@
         with_items: "{{ rejected_devices.stdout | default('{}') | from_json }}"
         when: "'Used by ceph-disk' in item.rejected_reasons"
 
+      - name: Remove /dev/dm-0 from devices variable
+        set_fact:
+          devices: "{{ devices | difference(['/dev/dm-0']) }}"
+
+      - name: Remove /dev/dm-1 from devices variable
+        set_fact:
+          devices: "{{ devices | difference(['/dev/dm-1']) }}"
+
       - name: set_fact _devices
         set_fact:
           _devices: "{{ devices | difference(_rejected_devices | default([])) }}"
