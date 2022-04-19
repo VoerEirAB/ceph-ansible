@@ -320,7 +320,7 @@ ceph_repository: community
 # These variables must be defined at least in all.yml and overrided if needed (inventory host file or group_vars/*.yml).
 # Eg. If you want to specify for each monitor which address the monitor will bind to you can set it in your **inventory host file** by using 'monitor_address' variable.
 # Preference will go to monitor_address if both monitor_address and monitor_interface are defined.
-monitor_interface: eno1
+monitor_interface: eno2
 #monitor_address: x.x.x.x
 #monitor_address_block: subnet
 # set to either ipv4 or ipv6, whichever your network is using

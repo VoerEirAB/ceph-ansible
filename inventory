@@ -2,7 +2,6 @@
 controller ansible_user=ubuntu
 
 [mons]
-controller ansible_user=ubuntu
 compute04 ansible_user=ubuntu
 compute06 ansible_user=ubuntu
 compute13 ansible_user=ubuntu

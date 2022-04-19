@@ -67,6 +67,10 @@
         daemon_reload: yes
       when: proxy_created.changed | bool or proxy_removed.changed | bool
 
+    - name: Wait for 30 seconds before restarting docker service
+      pause:
+        seconds: 30
+
     - name: start container service
       service:
         name: '{{ container_service_name }}'
