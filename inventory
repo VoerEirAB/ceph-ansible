@@ -2,15 +2,28 @@
 controller ansible_user=ubuntu
 
 [mons]
-compute04 ansible_user=ubuntu
-compute06 ansible_user=ubuntu
-compute13 ansible_user=ubuntu
+controller ansible_user=ubuntu
+#compute04 ansible_user=ubuntu
+#compute06 ansible_user=ubuntu
+#compute07 ansible_user=ubuntu
+#compute08 ansible_user=ubuntu
+#compute09 ansible_user=ubuntu
 
 [osds]
 #controller ansible_user=ubuntu
 compute04 ansible_user=ubuntu
 compute06 ansible_user=ubuntu
-compute13 ansible_user=ubuntu
+compute07 ansible_user=ubuntu
+#compute08 ansible_user=ubuntu
+#compute09 ansible_user=ubuntu
+
+[rgws]
+controller ansible_user=ubuntu
+#compute04 ansible_user=ubuntu
+#compute06 ansible_user=ubuntu
+#compute07 ansible_user=ubuntu
+#compute08 ansible_user=ubuntu
+#compute09 ansible_user=ubuntu
 
 [monitoring]
 controller ansible_user=ubuntu
