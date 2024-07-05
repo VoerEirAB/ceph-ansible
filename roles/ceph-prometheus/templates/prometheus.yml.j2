@@ -16,6 +16,7 @@ scrape_configs:
       - targets: ['{{ host }}:9283']
         labels:
           instance: 'ceph_cluster'
+          cluster: 'ceph_cluster'
 {% endfor %}
   - job_name: 'node'
     static_configs:

@@ -26,6 +26,7 @@ ExecStart=/usr/bin/{{ container_binary }} run --rm --name=grafana-server \
   --pids-limit={{ 0 if container_binary == 'podman' else -1 }} \
   -v /etc/grafana:/etc/grafana:Z \
   -v /var/lib/grafana:/var/lib/grafana:Z \
+  -v /etc/ssl:/etc/ssl:Z \
   --net=host \
   --cpu-period={{ grafana_container_cpu_period }} \
   --cpu-quota={{ grafana_container_cpu_period * grafana_container_cpu_cores }} \

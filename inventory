@@ -1,0 +1,34 @@
+[grafana-server]
+compute11 ansible_user=ubuntu
+
+[mons]
+#controller ansible_user=ubuntu
+compute11 ansible_user=ubuntu
+compute13 ansible_user=ubuntu
+compute14 ansible_user=ubuntu
+#compute08 ansible_user=ubuntu
+#compute09 ansible_user=ubuntu
+
+[mgrs]
+compute11 ansible_user=ubuntu
+
+[osds]
+#controller ansible_user=ubuntu
+compute11 ansible_user=ubuntu
+compute13 ansible_user=ubuntu
+compute14 ansible_user=ubuntu
+compute15 ansible_user=ubuntu
+compute16 ansible_user=ubuntu
+#compute13 ansible_user=ubuntu
+
+[rgws]
+#controller ansible_user=ubuntu
+compute11 ansible_user=ubuntu
+compute13 ansible_user=ubuntu
+compute14 ansible_user=ubuntu
+#compute08 ansible_user=ubuntu
+#compute09 ansible_user=ubuntu
+
+[monitoring]
+compute11 ansible_user=ubuntu
+#compute13 ansible_user=ubuntu

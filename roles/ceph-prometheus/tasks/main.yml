@@ -21,6 +21,40 @@
     config_overrides: "{{ prometheus_conf_overrides }}"
   notify: Service handler
 
+- name: Copy prometheus SSL certificate file
+  ansible.builtin.copy:
+    src: "{{ grafana_crt }}"
+    dest: "/etc/prometheus/ceph-dashboard.crt"
+    owner: "{{ prometheus_user_id }}"
+    group: "{{ prometheus_user_id }}"
+    mode: "0640"
+    remote_src: "{{ dashboard_tls_external | bool }}"
+  when:
+    - grafana_crt | length > 0
+    - dashboard_protocol == "https"
+
+- name: Copy prometheus SSL certificate key
+  ansible.builtin.copy:
+    src: "{{ grafana_key }}"
+    dest: "/etc/prometheus/ceph-dashboard.key"
+    owner: "{{ prometheus_user_id }}"
+    group: "{{ prometheus_user_id }}"
+    mode: "0440"
+    remote_src: "{{ dashboard_tls_external | bool }}"
+  when:
+    - grafana_key | length > 0
+    - dashboard_protocol == "https"
+
+- name: Write prometheus TLS web config file
+  openstack.config_template.config_template:
+    src: web-config.yml.j2
+    dest: "{{ prometheus_conf_dir }}/web-config.yml"
+    owner: "{{ prometheus_user_id }}"
+    group: "{{ prometheus_user_id }}"
+    mode: "0640"
+    config_type: yaml
+  notify: Service handler
+
 - name: Make sure the alerting rules directory exists
   ansible.builtin.file:
     path: "/etc/prometheus/alerting/"
@@ -57,6 +91,40 @@
     mode: "0640"
     config_type: yaml
     config_overrides: "{{ alertmanager_conf_overrides }}"
+  notify: Service handler
+
+- name: Copy alertmanager SSL certificate file
+  ansible.builtin.copy:
+    src: "{{ grafana_crt }}"
+    dest: "/etc/alertmanager/ceph-dashboard.crt"
+    owner: "{{ prometheus_user_id }}"
+    group: "{{ prometheus_user_id }}"
+    mode: "0640"
+    remote_src: "{{ dashboard_tls_external | bool }}"
+  when:
+    - grafana_crt | length > 0
+    - dashboard_protocol == "https"
+
+- name: Copy alertmanager SSL certificate key
+  ansible.builtin.copy:
+    src: "{{ grafana_key }}"
+    dest: "/etc/alertmanager/ceph-dashboard.key"
+    owner: "{{ prometheus_user_id }}"
+    group: "{{ prometheus_user_id }}"
+    mode: "0440"
+    remote_src: "{{ dashboard_tls_external | bool }}"
+  when:
+    - grafana_key | length > 0
+    - dashboard_protocol == "https"
+
+- name: Write alertmanager TLS web config file
+  openstack.config_template.config_template:
+    src: web-config-alertmanager.yml.j2
+    dest: "{{ alertmanager_conf_dir }}/web-config.yml"
+    owner: "{{ prometheus_user_id }}"
+    group: "{{ prometheus_user_id }}"
+    mode: "0640"
+    config_type: yaml
   notify: Service handler
 
 - name: Include setup_container.yml
