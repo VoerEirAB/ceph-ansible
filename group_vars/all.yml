@@ -157,7 +157,7 @@ ceph_repository: community
 #
 #ceph_mirror: https://download.ceph.com
 #ceph_stable_key: https://download.ceph.com/keys/release.asc
-#ceph_stable_release: pacific
+ceph_stable_release: pacific
 #ceph_stable_repo: "{{ ceph_mirror }}/debian-{{ ceph_stable_release }}"
 
 #nfs_ganesha_stable: true # use stable repos for nfs-ganesha
@@ -364,10 +364,10 @@ monitor_interface: eno1
 #block_db_size: -1 # block db size in bytes for the ceph-volume lvm batch. -1 means use the default of 'as big as possible'.
 public_network: 172.16.227.0/24
 #public_network: 30.0.0.0/24
-cluster_network: "{{ public_network | regex_replace(' ', '') }}"
-#cluster_network: 20.0.0.0/24
-#osd_mkfs_type: xfs
-#osd_mkfs_options_xfs: -f -i size=2048
+#cluster_network: "{{ public_network | regex_replace(' ', '') }}"
+cluster_network: 20.0.0.0/24
+osd_mkfs_type: xfs
+osd_mkfs_options_xfs: -f -i size=2048
 #osd_mount_options_xfs: noatime,largeio,inode64,swalloc
 #osd_objectstore: bluestore
 
@@ -408,7 +408,7 @@ cluster_network: "{{ public_network | regex_replace(' ', '') }}"
 # These variables must be defined at least in all.yml and overrided if needed (inventory host file or group_vars/*.yml).
 # Eg. If you want to specify for each radosgw node which address the radosgw will bind to you can set it in your **inventory host file** by using 'radosgw_address' variable.
 # Preference will go to radosgw_address if both radosgw_address and radosgw_interface are defined.
-radosgw_interface: eno1
+radosgw_interface: eno2
 #radosgw_interface: enp8s0f1
 #radosgw_address: x.x.x.x
 #radosgw_address_block: subnet

@@ -1,31 +1,32 @@
 [grafana-server]
-controller ansible_user=ubuntu
+controller ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
 
 [mons]
 #controller ansible_user=ubuntu
-compute04 ansible_user=ubuntu
-compute06 ansible_user=ubuntu
-compute07 ansible_user=ubuntu
+compute04 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+compute06 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+#compute07 ansible_user=ubuntu
 #compute08 ansible_user=ubuntu
-#compute09 ansible_user=ubuntu
+compute09 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
 
 [osds]
 #controller ansible_user=ubuntu
-compute04 ansible_user=ubuntu
-compute06 ansible_user=ubuntu
-compute07 ansible_user=ubuntu
-#compute08 ansible_user=ubuntu
-#compute09 ansible_user=ubuntu
+compute04 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+compute06 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+compute09 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+#compute07 ansible_user=ubuntu
+#compute17 ansible_user=ubuntu
+#compute18 ansible_user=ubuntu
 #compute13 ansible_user=ubuntu
 
 [rgws]
 #controller ansible_user=ubuntu
-compute04 ansible_user=ubuntu
-compute06 ansible_user=ubuntu
-compute07 ansible_user=ubuntu
+#compute04 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+#compute06 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
+#compute07 ansible_user=ubuntu
 #compute08 ansible_user=ubuntu
-#compute09 ansible_user=ubuntu
+compute09 ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
 
 [monitoring]
-controller ansible_user=ubuntu
+controller ansible_user=ubuntu ansible_python_interpreter=/usr/bin/python3
 #compute13 ansible_user=ubuntu
