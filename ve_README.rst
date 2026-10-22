@@ -1,4 +1,8 @@
 #Follow steps to creata a ceph cluster using ceph-ansible
+# Create lv on both the disk on each baremetals
+sudo vgcreate vgroot1 /dev/sdb2;sudo lvcreate -n osd1 -l 100%FREE vgroot1
+sudo vgcreate vgroot /dev/sda3;sudo lvcreate -n osd -l 100%FREE vgroot
+
 source venv/bin/activate
 ansible-playbook -vv  -i inventory infrastructure-playbooks/purge-cluster.yml
 ansible -i inventory osds -m shell -a 'sudo ln -sf /dev/sda /dev/disk/by-id/osd;sudo wipefs --all /dev/sda' -l "compute11,compute13,compute14,compute15"
