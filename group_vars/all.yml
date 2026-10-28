@@ -552,6 +552,12 @@ radosgw_interface: eno2
 ceph_conf_overrides:
   global:
        mon_max_pg_per_osd: 450
+  # The OSD hosts also run Nova VMs. Without this, ceph.conf.j2 sets the
+  # target to 70% of RAM per OSD (about 44 GB on the 64 GB computes), which
+  # leaves too little for the VMs. Same key name as the template, so the
+  # override replaces its line.
+  osd:
+       osd memory target: 4294967296
 
 #############
 # OS TUNING #
